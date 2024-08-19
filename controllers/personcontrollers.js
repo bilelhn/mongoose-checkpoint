@@ -28,5 +28,23 @@ export const getPerson= async (req,res)=>{
         console.log(error)
        }
 }
+export const deletePerson= async (req,res)=>{
+    try {
+        const {id}=req.params;
+        const person = await Person.findByIdAndDelete({_id:id});
+        res.json(person);
+       } catch (error) {
+        console.log(error)
+       }
+}
+export const updatePerson= async (req,res)=>{
+    try {
+        const {id}=req.params;
+        const person = await Person.findByIdAndUpdate(id, req.body);
+        res.json(person);
+       } catch (error) {
+        console.log(error)
+       }
+}
 
 
